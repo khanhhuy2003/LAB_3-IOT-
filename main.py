@@ -20,7 +20,6 @@ def connected(client):
 def subscribe(client, userdata, mid, granted_qos):
     print("Subscribe thanh cong ...")
 
-
 def disconnected(client):
     print("Ngat ket noi ...")
     sys.exit(1)
