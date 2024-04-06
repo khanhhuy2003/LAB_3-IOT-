@@ -25,7 +25,6 @@ def disconnected(client):
     print("Ngat ket noi ...")
     sys.exit(1)
 
-
 def message(client, feed_id, payload):
     print("Nhan du lieu: " + payload)
     if feed_id == "nutnhan1":

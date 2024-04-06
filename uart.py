@@ -2,7 +2,6 @@ import serial.tools.list_ports
 import random
 import time
 import sys
-
 from Adafruit_IO import MQTTClient
 
 # def getPort():
