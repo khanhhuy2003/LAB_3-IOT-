@@ -8,7 +8,7 @@ from Adafruit_IO import MQTTClient
 from uart import *
 AIO_FEED_IDs = ["nutnhan1", "nutnhan2"]
 AIO_USERNAME = "khanhhuy03"
-AIO_KEY = "aio_nAts10ednWcKaXGFeEYmWNt0qv3Y"
+AIO_KEY = "aio_DaxU27n8NWCUWRNP31OnHpdvsjss"
 
 
 def connected(client):
@@ -28,6 +28,17 @@ def disconnected(client):
 
 def message(client, feed_id, payload):
     print("Nhan du lieu: " + payload)
+    if feed_id == "nutnhan1":
+        if payload == "1":
+            writeData("LED 1 TURN ON ")
+        else:
+            writeData("LED 1 TURN OFF ")
+    if feed_id == "nutnhan2":
+        if payload == "1":
+            writeData("LED 2 TURN ON ")
+        else:
+            writeData("LED 2 TURN OFF ")
+
 
 
 client = MQTTClient(AIO_USERNAME, AIO_KEY)
@@ -45,19 +56,13 @@ while True:
         counter = 10
         temp = random.randint(10, 30)
         client.publish("cambien1", temp)
+        print("cambien1", temp)
         light = random.randint(10, 100)
         client.publish("cambien2", light)
+        print("cambien2", light)
         humidity = random.randint(10, 100)
         client.publish("cambien3", humidity)
-
-    #counter_ai = counter_ai - 1
-
-    # if counter_ai <= 0:
-    #     counter = 5
-    #     ai = detect_image()
-    #     # print("AI output", ai)
-    #     client.publish("ai", ai)
-    # time.sleep(1)
+        print("cambien3", humidity)
     readSerial(client)
     time.sleep(1)
     pass
