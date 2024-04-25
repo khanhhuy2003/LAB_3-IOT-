@@ -28,6 +28,9 @@ def processData(client,data):
     print(splitData)
     if splitData[1] == "T":
         client.publish("cambien1", splitData[2])
+    if splitData[1] == "A":
+        client.publish("cambien2", splitData[2])
+
 ser = serial.Serial(port=getPort(), baudrate=115200)
 print(ser)
 mess = ""
